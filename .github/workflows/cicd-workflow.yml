@@ -13,9 +13,9 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
       - name: Build docker image
-        run: docker build -t rizwanshaukat/nodejs-app .
+        run: docker build -t fatima farid333/nodejs-app .
       - name: Publish image to docker hub
-        run: docker push rizwanshaukat/nodejs-app:latest
+        run: docker push fatima farid333/nodejs-app:latest
         
   deploy:
     needs: build
@@ -30,8 +30,8 @@ jobs:
       - name: Assign Docker Permission
         run: sudo chmod 777 /var/run/docker.sock
       - name: Pull image from docker hub
-        run: docker pull rizwanshaukat/nodejs-app
+        run: docker pull fatima farid333/nodejs-app
       - name: Delete old container
         run: docker rm -f nodejs-app-container
       - name: Run docker container
-        run: docker run -d -p 5000:5000 --name nodejs-app-container rizwanshaukat/nodejs-app
+        run: docker run -d -p 5000:5000 --name nodejs-app-container fatima farid333/nodejs-app
